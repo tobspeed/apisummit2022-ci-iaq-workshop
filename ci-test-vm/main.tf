@@ -22,6 +22,9 @@ resource "hcloud_server" "ansible-test-vm" {
   provisioner "local-exec" {
     command = "sleep 20; ssh-keygen -R ${hcloud_server.ansible-test-vm.ipv4_address}; ssh-keyscan -t rsa -H ${hcloud_server.ansible-test-vm.ipv4_address} >> ~/.ssh/known_hosts"
   }
+  depends_on = [
+    hcloud_ssh_key.ansible-test-ssh-key,
+  ]
 }
 
 output "public_ip_address" {
