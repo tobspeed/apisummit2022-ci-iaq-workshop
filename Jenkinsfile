@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Lint Ansible Playbook') {
             steps {
-              // ansible lint hinzufügen
+               sh "ansible-lint *.yml"
             }
         }
         stage('Start Test VM') {
