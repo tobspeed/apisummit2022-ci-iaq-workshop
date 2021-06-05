@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
-              sh 'ansible-playbook -i inventories/test.hcloud.yml -u root install-hero-app.yml'
+              sh 'ansible-playbook -i inventory/test.hcloud.yml -u root install-hero-app.yml'
             }
 
         }
