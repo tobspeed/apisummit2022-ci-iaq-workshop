@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+      HCLOUD_TOKEN = credentials('hcloud-token')
+    }
+
     stages {
         stage('Ansible Collection Preparation') {
             steps {
@@ -8,19 +13,24 @@ pipeline {
         }
         stage('Start Test VM') {
             steps {
-                sh 'vagrant up'
+              dir('ci-test-vm') {
+                sh 'terraform init'
+                sh 'terraform apply -auto-approve -var="hcloud_token=${HCLOUD_TOKEN}"'
+              }
             }
         }
         stage('Run Ansible Playbook') {
             steps {
-              sh 'ansible-playbook -i inventories/vagrant install-hero-app.yml'
+              sh 'ansible-playbook -i inventories/test.hcloud.yml install-hero-app.yml'
             }
 
         }
     }
     post {
         always {
-            sh 'vagrant destroy -f'
-        }
+          dir('ci-test-vm') {
+            sh 'terraform destroy -auto-approve -var="hcloud_token=${HCLOUD_TOKEN}"'
+          }
+         }
     }
 }
