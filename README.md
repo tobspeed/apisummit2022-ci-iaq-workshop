@@ -1,6 +1,6 @@
 # ci-iaq-workshop
 
-The code samples samples/ansible are tested with Ansible 2.10.9 and Vagrant 2.2.14.
+The code samples are tested with Ansible 2.10.9, Terraform 0.15.5 and Vagrant 2.2.14.
 
 ## Setup Local Test Infrastructure
 I prepare some Vagrantfiles for the setup of the test infrastructure if necessary.
@@ -12,6 +12,8 @@ Then follow these steps:
 
 Hint: Public and private keys can be generated with the following command: ssh-keygen
 
+
+## Setup Test Infrastructure in the Cloud with Terraform
 
 ## Ansible Playbooks
 
@@ -26,11 +28,11 @@ ansible-galaxy collection install -r requirements.yml
 After that the Ansible playbook can run with
 
 ```
-ansible-playbook -i inventory/vagrant install-hero-app.yml
+ansible-playbook -i inventory/test.hcloud.yml install-hero-app.yml
 ```
 The flag `-i` defines which server should be provisioned.
-In this case, the local vm bootstrapped by Vagrant.
+In this case, a vm bootstrapped by Terraform in the Hetzner Cloud.
 
 `ansible.cfg` defines default values for Ansible.
-In this case, the default remote user is `vagrant`.
-If you want to override it, use the flag `-u` for that or change the default value.
+In this case, the default remote user is `root` and the default private ssh key is `~/.ssh/id_hetzner_ansible_test`.
+If you want to override it, use the flag `-u` for changing the user and the flag `--private-key` for changing the pricate ssh key or change the default value.
