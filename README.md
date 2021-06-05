@@ -1,6 +1,6 @@
 # ci-iaq-workshop
 
-The code samples are tested with Ansible 2.10.9, Terraform 0.15.5, Vagrant 2.2.14 and Testinfra 6.3.0.
+The code samples are tested with Ansible 2.10.9, Terraform 0.15.5, Vagrant 2.2.14, ansible_lint-5.0.12 and Testinfra 6.3.0.
 
 ## Setup Local Test Infrastructure
 I prepare some Vagrantfiles for the setup of the test infrastructure if necessary.
@@ -36,6 +36,12 @@ In this case, a vm bootstrapped by Terraform in the Hetzner Cloud.
 `ansible.cfg` defines default values for Ansible.
 In this case, the default remote user is `root` and the default private ssh key is `~/.ssh/id_hetzner_ansible_test`.
 If you want to override it, use the flag `-u` for changing the user and the flag `--private-key` for changing the pricate ssh key or change the default value.
+
+## Linting Ansible Playbooks with Ansible Lint
+
+```shell
+ansible-lint *.yml
+```
 
 ## Testing Ansible Playbooks with Testinfra
 

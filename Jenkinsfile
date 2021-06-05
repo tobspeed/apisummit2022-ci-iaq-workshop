@@ -6,9 +6,9 @@ pipeline {
     }
 
     stages {
-        stage('Ansible Collection Preparation') {
+        stage('Lint Ansible Playbook') {
             steps {
-              sh 'ansible-galaxy collection install -r requirements.yml'
+               sh "ansible-lint *.yml"
             }
         }
         stage('Start Test VM') {
@@ -21,6 +21,7 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
+              sh 'ansible-galaxy collection install -r requirements.yml'
               sh 'ansible-playbook -i inventory/test.hcloud.yml install-hero-app.yml'
             }
         }
