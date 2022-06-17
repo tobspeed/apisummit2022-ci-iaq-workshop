@@ -32,9 +32,9 @@
 
     - name: start hero app docker container
       community.docker.docker_container:
-          name: my-hero-app
-          image: sparsick/spring-boot-demo
-          state: started
-          container_default_behavior: compatibility
-          ports:
-            - 80:8080
+        name: my-hero-app
+        image: sparsick/spring-boot-demo
+        state: started
+        container_default_behavior: compatibility
+        ports:
+          - 80:8080
