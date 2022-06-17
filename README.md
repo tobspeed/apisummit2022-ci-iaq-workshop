@@ -1,6 +1,6 @@
 # ci-iaq-workshop
 
-The code samples are tested with Ansible 2.10.9, Terraform 0.15.5, Vagrant 2.2.14, ansible_lint-5.0.12 and Testinfra 6.3.0.
+The code samples are tested with Ansible 2.12.6, Terraform 0.15.5, Vagrant 2.2.19, ansible_lint-5.0.12 and Testinfra 6.3.0.
 
 ## Setup Local Test Infrastructure
 I prepare some Vagrantfiles for the setup of the test infrastructure if necessary.
@@ -14,6 +14,23 @@ Hint: Public and private keys can be generated with the following command: ssh-k
 
 
 ## Setup Test Infrastructure in the Cloud with Terraform
+
+If you dont't want to use a local VM. You can also set up a VM in the cloud. 
+Here is a sample for Hetzer Cloud. 
+
+
+```
+cd ci-test-vm
+terraform init
+terraform apply -auto-approve -var="hcloud_token=<your hetzner cloud token>
+```
+
+You can clean up your test VM with
+
+```
+cd ci-test-vm
+terraform destroy  -auto-approve -var="hcloud_token=<your hetzner cloud token>
+```
 
 ## Ansible Playbooks
 
