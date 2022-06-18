@@ -6,10 +6,8 @@
 
 == Übung 1
 In der ersten Aufgabe geht es darum das einen Jenkins Job für die Ansible Playbooks einzurichten.
-Erklären was das Script macht
 
-
-Jeder Teilnehmer erhält seine eigene Jenkins Instanz (Die URL wird im Workshop bekannt gegeben).
+Jeder Teilnehmer erstellt seinen eigenen CI Job auf einer Jenkins Instanz (Die URL wird im Workshop bekannt gegeben).
 Als Erstes forkst du bitte das GitHub Repository https://github.com/sparsick/ci-iaq-workshop, so dass du deine eigene Repository erhälst.
 
 In diesem Branch passt du den VM Namen in etwas deiner Wahl in den folgende Dateien an:
@@ -37,12 +35,7 @@ Dazu melde dich im Jenkins (URL wird im Workshop bekannt gegeben) mit den Creden
 - Username: `admin`
 - Passwort: `admin123`
 
-Als Erstes muss das API Token für die Hetzner Cloud eingerichtet werden, damit später aus der Pipeline heraus Test VM hoch- und runtergefahren werden können.
-Dazu gehst du unter `JENKINS_URL/credentials/store/system/domain/_/`.
-Dort fügst du ein neues Zugangsdatum  der Art `secret text` mit der ID `hcloud-token` ein.
-Das API Token (wird im Workshop bekannt gegeben) trägst du unter `Secret` ein.
-
-Dann richtest du einen neuen Pipeline Jenkins Job ein, in dem du auf `Element anlegen` klickst und `Pipeline` auswählst.
+Du richtest eine neuen Pipeline Jenkins Job ein, in dem du auf `Element anlegen` klickst und `Pipeline` auswählst.
 
 Unter `Pipeline -> Definition` wählst du `Pipeline script from SCM -> Git` aus und trägst deine Git Repo URL und den Branchnamen `exercise-01` an.
 
