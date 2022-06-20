@@ -1,7 +1,7 @@
 def test_docker_is_installed(host):
     # testen, ob das Paket "docker-ce" installiert ist
     dockerCe = host.package("docker-ce")
-    assert dockerCe.is_running
+    assert dockerCe.is_installed
 
 def test_docker_service_is_running(host):
     # testen, ob der Service "docker" läuft und verfügbar ist
