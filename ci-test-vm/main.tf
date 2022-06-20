@@ -4,8 +4,8 @@ provider "hcloud" {
 }
 
 # Create a new SSH key
-resource "hcloud_ssh_key" "ansible-hello-tobi" {
-  name = "Ansible Test VM SSH Key"
+resource "hcloud_ssh_key" "ansible-test-ssh-key" {
+  name = "Ansible Test VM SSH Key2"
   public_key = file(var.ssh_key)
 }
 
@@ -16,7 +16,7 @@ resource "hcloud_server" "ansible-test-vm" {
   server_type = "cx11"
   location = "nbg1"
   ssh_keys = [
-    "Ansible Test VM SSH Key"
+    "Ansible Test VM SSH Key2"
   ]
 
   provisioner "local-exec" {
