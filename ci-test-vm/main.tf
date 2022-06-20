@@ -23,7 +23,7 @@ resource "hcloud_server" "ansible-test-vm" {
     command = "sleep 20; ssh-keygen -R ${hcloud_server.ansible-test-vm.ipv4_address}; ssh-keyscan -t rsa -H ${hcloud_server.ansible-test-vm.ipv4_address} >> ~/.ssh/known_hosts"
   }
   depends_on = [
-    hcloud_ssh_key.ansible-test-ssh-key
+    hcloud_ssh_key.ansible-test-ssh-key2
   ]
 }
 
