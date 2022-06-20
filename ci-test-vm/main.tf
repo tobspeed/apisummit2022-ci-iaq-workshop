@@ -4,7 +4,7 @@ provider "hcloud" {
 }
 
 # Create a new SSH key
-resource "hcloud_ssh_key" "ansible-test-ssh-key" {
+resource "hcloud_ssh_key" "ansible-test-ssh-key2" {
   name = "Ansible Test VM SSH Key3"
   public_key = file(var.ssh_key)
 }
